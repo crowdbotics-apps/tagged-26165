@@ -23,9 +23,17 @@ class User(AbstractUser):
         blank=True,
         max_length=255,
     )
-    age = models.IntegerField(
+    email = models.EmailField(
+        max_length=254,
         null=True,
         blank=True,
+    )
+    age = models.ForeignKey(
+        "home.Images",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="user_age",
     )
 
     def get_absolute_url(self):
